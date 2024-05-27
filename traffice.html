@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #output {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .numberssumationfont {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .numberssumation {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .numbersgeneratedfont {
+        margin-top: 15px;
+      }
+      .spacemeanSpeed {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Random Number Generator</h2>
+    <label for="numCount">Enter the number of random numbers to generate:</label
+    ><br />
+    <input
+      type="number"
+      id="numCount"
+      min="1"
+      max="1000"
+      value="1"
+    /><br /><br />
+    <button onclick="generateNumbers()">Generate Numbers</button>
+    <div class="numberssumationfont">Numbers Sumation:</div>
+    <div id="numberssumation"></div>
+    <div class="numbersgeneratedfont">NumbersGenerated:</div>
+    <div class="numbersgenerated" id="output"></div>
+    <div class="spacemeanSpeed">SpacementSpeed:</div>
+    <div class="spacemeanSpeed" id="spacemeanSpeed"></div>
+
+    <script>
+      function generateNumbers() {
+        var numCountInput = document.getElementById("numCount");
+        var numCount = parseInt(numCountInput.value);
+
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        let sumationOfAllNumbers = 0;
+        let quotient = 0;
+        let allQuotientsum = 0;
+        let sumationOfQuotient = 0;
+        let spacemeanSpeed = 0;
+
+        for (var i = 0; i < numCount; i++) {
+          var randomNumber = Math.floor(Math.random() * 16) + 30;
+          sumationOfAllNumbers += randomNumber;
+          quotient = 1.7 / randomNumber;
+          allQuotientsum += quotient;
+          outputDiv.innerHTML += randomNumber + " ";
+        }
+        sumationOfQuotient = 1.7 / allQuotientsum;
+        spacemeanSpeed = sumationOfQuotient / numCount;
+
+        var numberSumationElem = document.getElementById("numberssumation");
+        var spacemeanSpeedElem = document.getElementById("spacemeanSpeed");
+        numberSumationElem.innerHTML = sumationOfAllNumbers;
+        spacemeanSpeedElem.innerHTML = spacemeanSpeed;
+      }
+    </script>
+  </body>
+</html>
